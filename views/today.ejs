@@ -34,7 +34,9 @@
           <td class="food">
             <ul>
               <% order.order.forEach(function(food){ %>
-              <%=food.category%>
+              <%if(food.category){%>
+              <li><strong style="color: red;">#<%=food.category%></strong></li>
+              <%}%>
               <li><%=food.name%> - <%=food.price%>元 - <%=food.num%> 份</li>
               <%})%>
               <%if(order.picmenu){%>
@@ -104,7 +106,7 @@
         <tbody>
         <% for(var key in orders.analytics){%>
         <tr>
-          <td><%=orders.analytics[key].name%> - <%=orders.analytics[key].num%>份</td>
+          <td><strong style="font-weight: bold;"><%=orders.analytics[key].category%></strong>#<%=orders.analytics[key].name%> - <%=orders.analytics[key].num%>份</td>
         </tr>
         <%}%>
         <% orders.orders.forEach(function(order){

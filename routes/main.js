@@ -54,14 +54,16 @@ exports.today = function (req, res, next) {
 
         //统计各种美食数量
         for (var j in order.order) {
+          var food = order.order[j];
           //累计总数量
-          group[shop_id].totalNum += parseInt(order.order[j].num);
+          group[shop_id].totalNum += parseInt(food.num);
 
-          if (group[shop_id].analytics[order.order[j].id] == undefined) {
-            group[shop_id].analytics[order.order[j].id] = {name:order.order[j].name, num:parseFloat(orders[i].order[j].num)};
+          if (group[shop_id].analytics[food.id] == undefined) {
+            group[shop_id].analytics[food.id] = {name:food.name, num:parseFloat(food.num), category:food.category};
           } else {
-            group[shop_id].analytics[order.order[j].id].num = parseFloat(group[shop_id].analytics[order.order[j].id].num) + parseFloat(order.order[j].num);
+            group[shop_id].analytics[food.id].num = parseFloat(group[shop_id].analytics[food.id].num) + parseFloat(food.num);
           }
+          console.info(group);
         }
         //统计各种图片菜单点餐项
         for(var j in order.picmenu){
