@@ -63,6 +63,7 @@
         id: el.attr('data-id'),
         name: el.attr('data-name'),
         price: el.attr('data-price'),
+        category: el.data('category'),
         num: 1,
       };
       //向数组添加

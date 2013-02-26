@@ -34,6 +34,7 @@
           <td class="food">
             <ul>
               <% order.order.forEach(function(food){ %>
+              <%=food.category%>
               <li><%=food.name%> - <%=food.price%>元 - <%=food.num%> 份</li>
               <%})%>
               <%if(order.picmenu){%>
