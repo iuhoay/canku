@@ -27,7 +27,7 @@
           <ul>
             <% item.foods.forEach(function(food){%>
             <li id="food-<%=food._id%>" data-id="<%=food._id%>" data-name="<%=food.name%>"
-                data-price="<%=food.price%>">
+                data-price="<%=food.price%>" data-category="<%=item.name%>">
               <%=food.name%><em><%=food.price%> 元</em></li>
             <% })%>
           </ul>
