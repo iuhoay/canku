@@ -8,7 +8,7 @@
   <% for(var key in group){ var orders = group[key];%>
   <div id="shop-<%=orders.shop._id%>">
   <h1 class="page-title">
-    <strong><%=orders.shop.name%></strong>
+    <a href="/shop/<%=orders.shop._id%>"><strong><%=orders.shop.name%></strong></a>
     <span class="shop_tel">电话：<%=orders.shop.tel%></span>
     <span class="shop_address">地址：<%=orders.shop.address%></span>
     <%if(orders.minLuck.user_name){%>
