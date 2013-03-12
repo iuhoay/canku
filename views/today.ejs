@@ -97,6 +97,12 @@
         </tr>
         </tfoot>
       </table>
+      <table class="today-tb" style="float: right; width: 40%;">
+        <thead><tr><th colspan="2">备注</th></tr></thead>
+        <% orders.orders.forEach(function(order){if(order.remark){%>
+        <tr><td width="20%"><%=order.user_name%></td><td><%=order.remark%></td></tr>
+        <%}})%>
+      </table>
       <table id="today-analytics" class="today-tb">
         <thead>
         <tr>

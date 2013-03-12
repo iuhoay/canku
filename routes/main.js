@@ -63,7 +63,6 @@ exports.today = function (req, res, next) {
           } else {
             group[shop_id].analytics[food.id].num = parseFloat(group[shop_id].analytics[food.id].num) + parseFloat(food.num);
           }
-          console.info(group);
         }
         //统计各种图片菜单点餐项
         for(var j in order.picmenu){
@@ -193,6 +192,7 @@ exports.submit_order = function (req, res) {
   var picmenu = JSON.parse(req.body.picmenu);
   var shop_id = req.body.shop_id;
   var shop_name = req.body.shop_name;
+  var remark = req.body.remark;
 
   var total = 0.0;
   for (var i in order_list) {
@@ -200,7 +200,7 @@ exports.submit_order = function (req, res) {
   }
 
   //插入订单
-  db.order.insert({shop_id:shop_id, shop_name:shop_name, user_id:req.session.user._id, user_name:req.session.user.name, time:util.getUTC8Time("YYYY-MM-DD HH:mm:ss"), total:total, order:order_list, picmenu:picmenu, luck:luck}, function (err, result) {
+  db.order.insert({shop_id:shop_id, shop_name:shop_name, user_id:req.session.user._id, user_name:req.session.user.name, time:util.getUTC8Time("YYYY-MM-DD HH:mm:ss"), total:total, order:order_list, picmenu:picmenu, luck:luck, remark: remark}, function (err, result) {
     if (!err) {
       console.log(result);
       res.send('{"result":"success","luck":"' + luck + '"}');

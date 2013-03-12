@@ -89,6 +89,7 @@
       dismissmodalclass: 'close-reveal-modal'
     });
 
+
     if (shopping_cart.length <= 0 && $('#picmenu>.ui-draggable').length==0) {
       $('#confirm-list').empty().html("亲，不要着急，您还木有点菜呢！");
     } else {
@@ -137,7 +138,7 @@
         $.ajax({
           type: "POST",
           url: "/submit_order",
-          data: "list=" + encodeURIComponent(JSON.stringify(shopping_cart)) + "&picmenu=" + encodeURIComponent(JSON.stringify(picmenu_list)) +"&shop_name=" + shop_name + "&shop_id=" + shop_id,
+          data: "list=" + encodeURIComponent(JSON.stringify(shopping_cart)) + "&picmenu=" + encodeURIComponent(JSON.stringify(picmenu_list)) +"&shop_name=" + shop_name + "&shop_id=" + shop_id + "&remark=" + $("#remark").val(),
           dataType: 'json',
           success: function (data) {
             if (data.result == "success") {
