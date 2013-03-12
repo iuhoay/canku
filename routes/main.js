@@ -63,7 +63,6 @@ exports.today = function (req, res, next) {
           } else {
             group[shop_id].analytics[food.id].num = parseFloat(group[shop_id].analytics[food.id].num) + parseFloat(food.num);
           }
-          console.info(group);
         }
         //统计各种图片菜单点餐项
         for(var j in order.picmenu){
