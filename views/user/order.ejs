@@ -19,7 +19,7 @@
           <td class="num-td"><%=item.order[i].num%>份</td>
           <% if(i==0&item.order.length==1){%>
           <td class="total-td">共计 <%=item.total%> 元</td>
-          <td class="meta-td">无备注</td>
+          <td class="meta-td"><%=item.remark || "无备注"%></td>
           <!--<td class="action-td"><input type="button" class="btn again" value="再买一次！"
                                        onclick="javascript:(alert('抱歉，此功能暂未开放！'))"></td>-->
           <%}else if(i==0&item.order.length>1){%>
