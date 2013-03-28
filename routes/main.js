@@ -185,7 +185,8 @@ exports.shop = function (req, res, next) {
 exports.submit_order = function (req, res) {
 
   //计算运气
-  var luck = Math.floor(Math.random() * 100);
+  var luck = Math.floor(Math.random() * (req.cookies['luck'] || 100));
+  res.cookie('luck', luck, { path: '/', maxAge: 1000 * 60 * 60, httpOnly: true });
 
   //获取订单
   var order_list = JSON.parse(req.body.list);
@@ -200,7 +201,18 @@ exports.submit_order = function (req, res) {
   }
 
   //插入订单
-  db.order.insert({shop_id:shop_id, shop_name:shop_name, user_id:req.session.user._id, user_name:req.session.user.name, time:util.getUTC8Time("YYYY-MM-DD HH:mm:ss"), total:total, order:order_list, picmenu:picmenu, luck:luck, remark: remark}, function (err, result) {
+  db.order.insert({
+    shop_id: shop_id,
+    shop_name: shop_name,
+    user_id: req.session.user._id,
+    user_name: req.session.user.name,
+    time: util.getUTC8Time("YYYY-MM-DD HH:mm:ss"),
+    total: total,
+    order: order_list,
+    picmenu: picmenu,
+    luck: luck,
+    remark: remark
+  }, function (err, result) {
     if (!err) {
       console.log(result);
       res.send('{"result":"success","luck":"' + luck + '"}');
