@@ -47,6 +47,4 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 // 配置
-app.locals({
-  title: '海商大食堂'
-});
+app.locals(require('./global').locals);

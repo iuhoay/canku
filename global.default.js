@@ -23,6 +23,11 @@ exports.config = {
   }
 };
 
+// 参数
+exports.locals = {
+  title: '餐库'
+};
+
 
 //mongodb settings for mongolab START
 //如果使用 MongoLab 提供的 MongoDB 服务，请保留这个配置，否则，删除下面这一行
