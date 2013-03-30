@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
-  <title>餐库</title>
+  <title><%= locals.title %></title>
   <link href="/css/reset.css" rel="stylesheet" type="text/css"/>
   <link href="/css/style.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript" src="/js/jquery.js"></script>
@@ -11,7 +11,7 @@
 <header id="head">
   <nav class="nav">
     <div class="wap">
-      <div title="餐库" class="logo"><a href="/"><span>餐库</span></a></div>
+      <div title="<%= locals.title %>" class="logo"><a href="/"><%= locals.title %></a></div>
       <ul>
         <li><a href="/today">今日订单</a></li>
         <% if (locals.session.user) { %>

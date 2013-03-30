@@ -45,3 +45,8 @@ routes(app);
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+// 配置
+app.locals({
+  title: '海商大食堂'
+});

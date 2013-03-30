@@ -68,9 +68,7 @@ body { position: relative; color: #333; font-weight: normal; line-height: 20px;}
 .auth_form button { background: #c02116; float: right; }
 
 .login-more { padding: 10px; text-align: center }
-.logo a { float: left; width: 64px; height: 45px; background: url("../img/logo2.png") no-repeat }
-.logo a:hover { width: 74px }
-.logo a span { display: none }
+.logo a { color: white; line-height: 45px; font-size: 27px; text-decoration: none; }
 .nav { margin-bottom: 20px; height: 45px; background: #c02116 }
 .nav ul { position: absolute; top: 0; right: 0; }
 .nav li { position: relative; float: left }
