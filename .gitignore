@@ -168,3 +168,5 @@ node_modules
 global.js
 public/picmenu*.jpg
 
+# mongodb dump
+dump
