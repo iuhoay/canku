@@ -170,3 +170,7 @@ public/picmenu*.jpg
 
 # mongodb dump
 dump
+
+# vagrant
+.vagrant/
+Vagrantfile
