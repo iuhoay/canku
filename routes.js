@@ -58,6 +58,13 @@ module.exports = function(app){
   app.get('/admin/user/delete/:id',user.auth_super_admin, admin.user_delete);
   app.get('/admin/user/isAdmin/:id',user.auth_super_admin, admin.user_isAdmin);
   app.get('/admin/user/canOperateShop/:id',user.auth_super_admin, admin.user_operateShop);
+
+  // admin group
+  app.get('/admin/group', user.auth_admin, admin.group_index);
+  app.get('/admin/group/new', user.auth_admin, admin.group_new);
+  app.post('/admin/group/create', user.auth_admin, admin.group_create);
+  app.get('/admin/group/:id/delete', user.auth_super_admin, admin.group_delete);
+
   //404 hadle
   app.get('*', main.pageNotFound);
 };

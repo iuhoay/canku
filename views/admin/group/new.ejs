@@ -1,0 +1,22 @@
+<% include ../header %>
+<form method="post" class="form-horizontal" action="/admin/group/create">
+  <legend>添加分组</legend>
+  <div class="control-group">
+    <label class="control-label" for="name">名称</label>
+    <div class="controls">
+      <input type="text" name="name" id="name">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="remark">备注</label>
+    <div class="controls">
+      <textarea name="remark" id="remark"></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <input type="submit" value="提交" class="btn btn-primary">
+    </div>
+  </div>
+</form>
+<% include ../footer %>

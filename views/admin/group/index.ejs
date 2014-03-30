@@ -1,0 +1,36 @@
+<% include ../header %>
+<h2>分组</h2>
+
+<a class="btn btn-primary pull-right btn-mini" href="/admin/group/new">添加分组</a>
+
+<% if (groups) { %>
+<table class="table">
+  <thead>
+    <th>组名</th>
+    <th>备注</th>
+  </thead>
+  <tbody>
+    <% for (var key in groups) { var group = groups[key]; %>
+    <tr>
+      <td width="40%"><%= group.name %></td>
+      <td width="40%"><%= group.remark %></td>
+      <td>
+        <a href="/admin/group/<%= group._id %>/delete" class="btn btn-danger btn-mini btn-group-delete">删除</a>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<% } else { %>
+no group
+<% }%>
+
+<script>
+$(".btn-group-delete").on("click", function() {
+  if (!confirm("Are you sure?")) {
+    return false;
+  }
+});
+</script>
+
+<% include ../footer %>

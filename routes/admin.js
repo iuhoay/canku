@@ -14,6 +14,7 @@ var dateformat = require('dateformat');
 db.bind('shop');
 db.bind('food');
 db.bind('user');
+db.bind('group');
 
 exports.index = function (req, res) {
   var nowtime = util.getUTC8Time("YYYY-MM-DD HH:mm:SS");
@@ -62,7 +63,7 @@ exports.shop_add = function (req, res) {
       'address':address,
       'tel':tel,
       'categories':req.body.categories,
-      'css':req.body.css,
+      'css':req.body.css
     };
 
     (function(cb){
@@ -317,3 +318,41 @@ exports.shop_delete = function (req, res) {
     }
   });
 }
+
+// GET /admin/group
+exports.group_index = function (req, res) {
+  db.group.find().toArray(function (err, result) {
+    res.render("admin/group/index", { groups: result });
+  });
+}
+
+// GET /admin/group/new
+exports.group_new = function (req, res) {
+  res.render("admin/group/new");
+}
+// POST /admin/group/create
+exports.group_create = function (req, res) {
+  var name = req.body.name;
+  var remark = req.body.remark;
+
+  var group = {
+    'name': name,
+    'remark': remark
+  };
+
+  db.group.insert(group, function (err, result) {
+    if (err) { log.error(err); }
+    else {
+      res.redirect("/admin/group");
+    }
+  })
+}
+
+// POST /admin/group/:id/delete
+exports.group_delete = function (req, res) {
+  var id = req.params.id;
+  db.group.remove({"_id": db.ObjectID.createFromHexString(id)}, function(err, result) {
+    res.redirect("/admin/group");
+  });
+}
+
