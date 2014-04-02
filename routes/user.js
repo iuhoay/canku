@@ -48,6 +48,7 @@ exports.login = function (req, res) {
       if (!err) {
         if (user != null) {
           util.gen_session(user.name, user.password, res);
+          req.session.user = user;
           res.redirect('/');
         } else {
           res.redirect('/user/login?tip=error')
@@ -249,7 +250,7 @@ exports.logout = function (req, res) {
   res.clearCookie(config.auth_cookie_name, {
     path: '/'
   });
-  res.redirect('/user/login');
+  res.redirect('/');
 }
 
 // URL /user/order

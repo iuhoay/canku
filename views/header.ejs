@@ -6,7 +6,7 @@
   <title><%= locals.title %></title>
   <link href="/css/reset.css" rel="stylesheet" type="text/css"/>
   <link href="/css/style.css" rel="stylesheet" type="text/css"/>
-  <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="//upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
 </head>
 <body>
 <header id="head">
@@ -14,8 +14,8 @@
     <nav class="nav">
       <div title="<%= locals.title %>" class="logo"><a href="/"><%= locals.title %></a></div>
       <ul>
-        <li><a href="/today">今日订单</a></li>
         <% if (locals.session.user) { %>
+        <li><a href="/today">今日订单</a></li>
         <li class="nav_item_my">
           <a href='#'><%=locals.session.user.name%></a>
           <ul id="nav_my">
@@ -27,6 +27,8 @@
           <% if (locals.session.user.canOperateShop || locals.session.user.isAdmin) {%>
           <li><a href="/admin/">后台</a></li>
           <% } %>
+        <% } else { %>
+        <li><a href="/user/login">登录</a></li>
         <% } %>
       </ul>
     </nav>

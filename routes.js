@@ -12,9 +12,9 @@ var pay = require('./routes/pay');
 
 module.exports = function(app){
 
-  app.get('/',  user.auth, main.index);
+  app.get('/',  main.index);
   app.get('/today', user.auth, main.today);
-  app.get('/shop/:id', user.auth, main.shop);
+  app.get('/shop/:id', main.shop);
   app.get('/get_shop', user.auth, main.get_shop);
   app.post('/submit_order', user.auth, main.submit_order);
 
