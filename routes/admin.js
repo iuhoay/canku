@@ -25,7 +25,7 @@ exports.index = function (req, res) {
     if ( req.session.user.isAdmin ){
       var isAdmin = req.session.user.isAdmin;
       db.user.find().sort( {reg_time: -1} ).toArray(function (err, users){
-        return res.render('admin/index', { title: '用户管理', nowtime: nowtime, week: week, isAdmin: isAdmin, users: users})  
+        return res.render('admin/index', { title: '用户管理', nowtime: nowtime, week: week, isAdmin: isAdmin, users: users})
       });
     }else{
       return res.render('admin/index', { title:'Express', nowtime:nowtime, week:week, isAdmin: isAdmin});
@@ -348,11 +348,26 @@ exports.group_create = function (req, res) {
   })
 }
 
-// POST /admin/group/:id/delete
+// GET /admin/group/:id/delete
 exports.group_delete = function (req, res) {
   var id = req.params.id;
   db.group.remove({"_id": db.ObjectID.createFromHexString(id)}, function(err, result) {
     res.redirect("/admin/group");
   });
+}
+
+// GET /admin/group/:id
+exports.group_show = function (req, res) {
+  var id = req.params.id;
+
+  var group;
+  (function(callback) {
+    db.group.findOne({"_id": db.ObjectID.createFromHexString(id)}, function(err, group) {
+      if (err) throw err;
+      callback(group);
+    });
+  })(function(group) {
+    res.render("admin/group/show", { group: group });
+  })
 }
 

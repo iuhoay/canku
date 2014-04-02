@@ -64,6 +64,7 @@ module.exports = function(app){
   app.get('/admin/group/new', user.auth_admin, admin.group_new);
   app.post('/admin/group/create', user.auth_admin, admin.group_create);
   app.get('/admin/group/:id/delete', user.auth_super_admin, admin.group_delete);
+  app.get('/admin/group/:id', user.auth_admin, admin.group_show);
 
   //404 hadle
   app.get('*', main.pageNotFound);
